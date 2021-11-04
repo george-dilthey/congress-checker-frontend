@@ -7,7 +7,6 @@ mapboxgl.accessToken =
 const Map = () => {
   const mapContainerRef = useRef(null);
 
-  // Initialize map when component mounts
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -16,14 +15,9 @@ const Map = () => {
       zoom: 1.4
     });
 
-    // Add navigation control (the +/- zoom buttons)
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-    // Clean up on unmount
     return () => map.remove();
   }, []);
   
-
   return (
     <div>
       <div className='map-container' ref={mapContainerRef} />
