@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import {setMapLocation} from '../../redux/actionCreators'
 import { connect } from "react-redux";
@@ -18,11 +18,73 @@ const Map = ({lon, lat, zoom, setMapLocation}) => {
       zoom: zoom
     });
 
+    let hoveredStateId = null
+
+    map.on('load', () => {
+      map.addSource('states', {
+      'type': 'geojson',
+      'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
+      });
+      
+      map.addLayer({
+        'id': 'state-fills',
+        'type': 'fill',
+        'source': 'states',
+        'layout': {},
+        'paint': {
+          'fill-color': '#627BC1',
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            1,
+            0.5
+          ]
+        }
+      });
+         
+      map.addLayer({
+        'id': 'state-borders',
+        'type': 'line',
+        'source': 'states',
+        'layout': {},
+        'paint': {
+          'line-color': '#627BC1',
+          'line-width': 2
+        }
+      });
+    });
+
     map.on('move', () => {
       const lon = map.getCenter().lng.toFixed(4);
       const lat = map.getCenter().lat.toFixed(4);
       const zoom = map.getZoom().toFixed(2);
       setMapLocation(lon, lat, zoom)
+    });
+
+    map.on('mousemove', 'state-fills', (e) => {
+      if (e.features.length > 0) {
+        if (hoveredStateId !== null) {
+          map.setFeatureState(
+            { source: 'states', id: hoveredStateId },
+            { hover: false }
+          );
+        }
+        hoveredStateId = e.features[0].id;
+        map.setFeatureState(
+          { source: 'states', id: hoveredStateId },
+          { hover: true }
+        );
+      }
+    });
+
+    map.on('mouseleave', 'state-fills', () => {
+      if (hoveredStateId !== null) {
+        map.setFeatureState(
+          { source: 'states', id: hoveredStateId },
+          { hover: false }
+        );
+      }
+      hoveredStateId = null;
     });
 
     return () => map.remove();
@@ -40,7 +102,7 @@ const Map = ({lon, lat, zoom, setMapLocation}) => {
   );
 };
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return state.mapLocation
 }
 
