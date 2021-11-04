@@ -1,5 +1,6 @@
 import './App.css';
-import Map from './components/Map.js'
+import Map from './components/Map/Map.js'
+
 
 function App() {
   return (
