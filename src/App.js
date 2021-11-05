@@ -2,10 +2,11 @@ import './App.css';
 import Map from './components/Map/Map.js'
 import { getMembersCard } from './redux/actionCreators';
 import { connect } from "react-redux";
+import { useEffect } from 'react';
 
 function App({getMembersCard}) {
 
-  getMembersCard()
+  useEffect(() => getMembersCard())
 
   return (
     <div>
