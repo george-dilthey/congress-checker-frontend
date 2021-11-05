@@ -10,6 +10,8 @@ mapboxgl.accessToken =
 const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName}) => {
   const mapContainerRef = useRef(null);
   const hoveredStateNameRef = useRef(null)
+  const memberCardRef = useRef(new mapboxgl.Popup({  }));
+
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -93,7 +95,23 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
           );
         }
         hoveredStateId = null;
+        map.getCanvas().style.cursor = '';
       });
+
+      map.on('click', 'state-fills', (e) => {
+        const coordinates = e.lngLat;
+         
+        memberCardRef.current
+          .setLngLat(coordinates)
+          .setHTML('<h1>Hello</h1>')
+          .addTo(map);
+      });
+
+      map.on('mouseenter', 'state-fills', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      
     });
 
     return () => map.remove();
