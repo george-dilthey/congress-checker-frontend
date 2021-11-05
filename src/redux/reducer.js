@@ -11,7 +11,7 @@ export default function reducer(state=initialState, {type, payload}){
     switch(type){
         case 'MOVE_MAP':
             return {...state, mapLocation: payload};
-        case 'HOVER_STATE':
+        case 'HOVER_STATE': 
             return {...state, hoveredStateName: payload};
         default:
             return {...state};    
