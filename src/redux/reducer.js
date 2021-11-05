@@ -4,7 +4,8 @@ const initialState = {
         lat: 38.6652,
         zoom: 3.64 
     },
-    hoveredStateName: ''
+    hoveredStateName: '',
+    membersCard: []
 }
 
 export default function reducer(state=initialState, {type, payload}){
@@ -13,6 +14,8 @@ export default function reducer(state=initialState, {type, payload}){
             return {...state, mapLocation: payload};
         case 'HOVER_STATE': 
             return {...state, hoveredStateName: payload};
+        case 'GET_MEMBERS_CARD':
+            return {...state, membersCard: payload};    
         default:
             return {...state};    
     }

@@ -1,8 +1,12 @@
 import './App.css';
 import Map from './components/Map/Map.js'
+import { getMembersCard } from './redux/actionCreators';
+import { connect } from "react-redux";
 
+function App({getMembersCard}) {
 
-function App() {
+  getMembersCard()
+
   return (
     <div>
       <Map />
@@ -10,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, { getMembersCard })(App);

@@ -11,3 +11,9 @@ export const setHoveredStateName = (stateName) => {
         payload: stateName
     })
 }
+
+export const getMembersCard = () => {
+    return dispatch => fetch('http://localhost:3000/api/v1/members')
+    .then(response => response.json())
+    .then(data => dispatch({type: 'GET_MEMBERS_CARD', payload: data}));
+}
