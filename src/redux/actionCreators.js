@@ -4,3 +4,10 @@ export const setMapLocation = (lon, lat, zoom) => {
         payload: {lon, lat, zoom}
     })
 }
+
+export const setHoveredStateName = (stateName) => {
+    return dispatch => dispatch({
+        type: 'HOVER_STATE',
+        payload: stateName
+    })
+}

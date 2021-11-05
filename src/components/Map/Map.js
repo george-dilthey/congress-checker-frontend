@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
-import {setMapLocation} from '../../redux/actionCreators'
+import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
-const Map = ({lon, lat, zoom, setMapLocation}) => {
+const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName}) => {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
@@ -69,11 +69,19 @@ const Map = ({lon, lat, zoom, setMapLocation}) => {
             { hover: false }
           );
         }
+        
         hoveredStateId = e.features[0].id;
         map.setFeatureState(
           { source: 'states', id: hoveredStateId },
           { hover: true }
         );
+        let featureStateName = e.features[0].properties.STATE_NAME
+        console.log('state', hoveredStateName)
+        console.log('featured', featureStateName)
+
+        if(hoveredStateName !== featureStateName){
+          setHoveredStateName(featureStateName)
+        }
       }
     });
 
@@ -102,8 +110,11 @@ const Map = ({lon, lat, zoom, setMapLocation}) => {
   );
 };
 
-function mapStateToProps(state) {
-  return state.mapLocation
-}
+const mapStateToProps = state => {
+  return {
+    mapLocation: state.mapLocation,
+    hoveredStateName: state.hoveredStateName
+  };
+};
 
-export default connect(mapStateToProps, { setMapLocation })(Map);
+export default connect(mapStateToProps, { setMapLocation, setHoveredStateName })(Map);
