@@ -6,7 +6,7 @@ import MemberCard from "../MemberCard/MemberCard";
 
 const MemberContainer = ({ hoveredStateName, members }) => {
    
-  const memberCards = members.filter(m => m.state_name === hoveredStateName && m.in_office === "t") 
+  const memberCards = members.filter(m => m.stateName === hoveredStateName && m.inOffice === "t") 
   
   return (
     <div>
