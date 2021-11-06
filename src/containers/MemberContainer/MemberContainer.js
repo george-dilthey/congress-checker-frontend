@@ -4,15 +4,15 @@ import './MemberContainer.css'
 import MemberCard from "../../components/MemberCard/MemberCard";
 
 
-const MemberContainer = ({ hoveredStateName, members }) => {
+const MemberContainer = ({ clickedStateName, members }) => {
    
-  const memberCards = members.filter(m => m.stateName === hoveredStateName && m.inOffice === "t") 
+  const memberCards = members.filter(m => m.stateName === clickedStateName && m.inOffice === "t") 
   
   return (
     <div>
       <div className="row">
         {memberCards.map(m =>
-          <MemberCard member={m} key={m.memberId}></MemberCard>
+          <MemberCard member={m} key={m.memberId} />
         )}  
       </div>
     </div>

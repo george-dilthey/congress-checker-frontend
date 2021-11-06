@@ -4,6 +4,7 @@ import { getMembersCard } from './redux/actionCreators';
 import { connect } from "react-redux";
 import { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
+import MemberShow from './components/MemberShow/MemberShow';
 
 
 function App({getMembersCard}) {
@@ -14,6 +15,7 @@ function App({getMembersCard}) {
     <div>
       <Routes>
         <Route path="/map" element={<Map />} />
+        <Route path="/member/:memberId" element= {<MemberShow />} />
       </Routes>
     </div>
   );

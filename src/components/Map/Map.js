@@ -1,12 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
 import MemberContainer from '../../containers/MemberContainer/MemberContainer.js'
-import { Provider } from "react-redux";
-import store from '../../redux/store';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
@@ -15,7 +13,10 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
   const mapContainerRef = useRef(null);
   const hoveredStateNameRef = useRef(null)
   const popupRef = useRef(new mapboxgl.Popup());
+  const memberContainerRef = useRef(document.createElement('div'));
 
+  const [clickedStateName, setClickedStateName] = useState(null)
+  const [map, setMap] = useState(null)
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -58,14 +59,33 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
         }
       });
     
-      let hoveredStateId = null
-
       map.on('move', () => {
         const lon = map.getCenter().lng.toFixed(4);
         const lat = map.getCenter().lat.toFixed(4);
         const zoom = map.getZoom().toFixed(2);
         setMapLocation(lon, lat, zoom)
       });
+
+      map.on('click', 'state-fills', (e) => {
+        const coordinates = e.lngLat;
+        setClickedStateName(e.features[0].properties.STATE_NAME)
+
+        popupRef.current
+          .setLngLat(coordinates)
+          .setDOMContent(memberContainerRef.current)
+          .addTo(map);
+
+      });
+
+      setMap(map)
+    });
+
+    return () => console.log('unmounting')
+  },[]); // eslint-disable-line react-hooks/exhaustive-deps
+  
+  useEffect(() => {
+    if(map){
+      let hoveredStateId = null
 
       map.on('mousemove', 'state-fills', (e) => {
         if (e.features.length > 0) {
@@ -105,25 +125,9 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
         hoveredStateId = null;
         map.getCanvas().style.cursor = '';
       });
+    }
+  });
 
-      map.on('click', 'state-fills', (e) => {
-        const coordinates = e.lngLat;
-
-        const memberContainer = document.createElement('div');
-        ReactDOM.render(<Provider store={store}><MemberContainer hoveredStateName={hoveredStateNameRef.current} /></Provider>, memberContainer);
-         
-        popupRef.current
-          .setLngLat(coordinates)
-          .setDOMContent(memberContainer)
-          .addTo(map);
-      });
-    });
-
-    return () => {
-      map.remove();
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
-  
   return (
     <div>
       <div className='topLabel'>
@@ -132,6 +136,7 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
         </div>
       </div>
       <div className='map-container' ref={mapContainerRef} />
+      {ReactDOM.createPortal(<MemberContainer clickedStateName = {clickedStateName} />, memberContainerRef.current)}
     </div>
   );
 };
