@@ -7,7 +7,7 @@ const MemberCard = ({ member }) => {
   return (
     <div className="column">
       <div className="card">
-        <img src={member.image225x275}></img>
+        <img src={member.image225x275} alt={`${member.firstName} ${member.lastName}`}></img>
         <h4>{member.shortTitle} {member.firstName} {member.lastName} ({member.party})</h4>
       </div>
     </div>  

@@ -12,7 +12,7 @@ const MemberContainer = ({ hoveredStateName, members }) => {
     <div>
       <div className="row">
         {memberCards.map(m =>
-          <MemberCard member={m}></MemberCard>
+          <MemberCard member={m} key={m.memberId}></MemberCard>
         )}  
       </div>
     </div>

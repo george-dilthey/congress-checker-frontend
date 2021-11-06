@@ -119,8 +119,10 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
       });
     });
 
-    return () => map.remove();
-  }, []);
+    return () => {
+      map.remove();
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
   
   return (
     <div>
