@@ -5,6 +5,8 @@ import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
 import MemberMapCard from '../MemberMapCard/MemberMapCard.js'
+import { Provider } from "react-redux";
+import store from '../../redux/store';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
@@ -108,7 +110,7 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
         const coordinates = e.lngLat;
 
         const memberMapCardNode = document.createElement('div');
-        ReactDOM.render(<MemberMapCard hoveredStateName={hoveredStateNameRef.current} />, memberMapCardNode);
+        ReactDOM.render(<Provider store={store}><MemberMapCard hoveredStateName={hoveredStateNameRef.current} /></Provider>, memberMapCardNode);
          
         memberMapCardRef.current
           .setLngLat(coordinates)
