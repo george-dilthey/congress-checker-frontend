@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
-import MemberMapCard from '../MemberMapCard/MemberMapCard.js'
+import MemberContainer from '../MemberContainer/MemberContainer.js'
 import { Provider } from "react-redux";
 import store from '../../redux/store';
 
@@ -14,7 +14,7 @@ mapboxgl.accessToken =
 const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName}) => {
   const mapContainerRef = useRef(null);
   const hoveredStateNameRef = useRef(null)
-  const memberMapCardRef = useRef(new mapboxgl.Popup());
+  const popupRef = useRef(new mapboxgl.Popup());
 
 
   useEffect(() => {
@@ -109,12 +109,12 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
       map.on('click', 'state-fills', (e) => {
         const coordinates = e.lngLat;
 
-        const memberMapCardNode = document.createElement('div');
-        ReactDOM.render(<Provider store={store}><MemberMapCard hoveredStateName={hoveredStateNameRef.current} /></Provider>, memberMapCardNode);
+        const memberContainer = document.createElement('div');
+        ReactDOM.render(<Provider store={store}><MemberContainer hoveredStateName={hoveredStateNameRef.current} /></Provider>, memberContainer);
          
-        memberMapCardRef.current
+        popupRef.current
           .setLngLat(coordinates)
-          .setDOMContent(memberMapCardNode)
+          .setDOMContent(memberContainer)
           .addTo(map);
       });
     });
