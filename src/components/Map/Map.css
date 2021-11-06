@@ -19,3 +19,7 @@
     padding: 6px;
     font-weight: bold;
   }
+
+  .mapboxgl-popup {
+      max-width: 600px !important;
+  }
