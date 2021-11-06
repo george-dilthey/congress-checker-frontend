@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
+import MemberMapCard from '../MemberMapCard/MemberMapCard.js'
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
@@ -10,7 +12,7 @@ mapboxgl.accessToken =
 const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName}) => {
   const mapContainerRef = useRef(null);
   const hoveredStateNameRef = useRef(null)
-  const memberCardRef = useRef(new mapboxgl.Popup({  }));
+  const memberMapCardRef = useRef(new mapboxgl.Popup());
 
 
   useEffect(() => {
@@ -87,6 +89,10 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
         }
       });
 
+      map.on('mouseenter', 'state-fills', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
       map.on('mouseleave', 'state-fills', () => {
         if (hoveredStateId !== null) {
           map.setFeatureState(
@@ -100,18 +106,15 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
 
       map.on('click', 'state-fills', (e) => {
         const coordinates = e.lngLat;
+
+        const memberMapCardNode = document.createElement('div');
+        ReactDOM.render(<MemberMapCard hoveredStateName={hoveredStateNameRef.current} />, memberMapCardNode);
          
-        memberCardRef.current
+        memberMapCardRef.current
           .setLngLat(coordinates)
-          .setHTML('<h1>Hello</h1>')
+          .setDOMContent(memberMapCardNode)
           .addTo(map);
       });
-
-      map.on('mouseenter', 'state-fills', () => {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-
-      
     });
 
     return () => map.remove();
