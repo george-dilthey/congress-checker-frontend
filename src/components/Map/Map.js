@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
-import MemberContainer from '../MemberContainer/MemberContainer.js'
+import MemberContainer from '../../containers/MemberContainer/MemberContainer.js'
 import { Provider } from "react-redux";
 import store from '../../redux/store';
 

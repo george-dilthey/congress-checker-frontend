@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import './MemberContainer.css'
-import MemberCard from "../MemberCard/MemberCard";
+import MemberCard from "../../components/MemberCard/MemberCard";
 
 
 const MemberContainer = ({ hoveredStateName, members }) => {
