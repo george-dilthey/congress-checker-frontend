@@ -7,7 +7,7 @@ const MemberCard = ({ member }) => {
    
   return (
     <div className="column">
-      <Link to={`/member/${member.memberId}`}>
+      <Link to={`/member/${member.congress}/${member.memberId}`}>
         <div className="card">
           <img src={member.image225x275} alt={`${member.firstName} ${member.lastName}`}></img>
           <h4>{member.shortTitle} {member.firstName} {member.lastName} ({member.party})</h4>

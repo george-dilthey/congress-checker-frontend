@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
-import {setMapLocation, setHoveredStateName} from '../../redux/actionCreators'
+import {setMapLocation, setHoveredStateName, getMembers} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
 import MemberContainer from '../../containers/MemberContainer/MemberContainer.js'
@@ -9,16 +9,19 @@ import MemberContainer from '../../containers/MemberContainer/MemberContainer.js
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
-const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName}) => {
+const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getMembers}) => {
   const mapContainerRef = useRef(null);
+  const memberContainerRef = useRef(document.createElement('div'));
+
   const hoveredStateNameRef = useRef(null)
   const popupRef = useRef(new mapboxgl.Popup());
-  const memberContainerRef = useRef(document.createElement('div'));
 
   const [clickedStateName, setClickedStateName] = useState(null)
   const [map, setMap] = useState(null)
 
   useEffect(() => {
+    getMembers()
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -144,8 +147,8 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
 const mapStateToProps = state => {
   return {
     mapLocation: state.mapLocation,
-    hoveredStateName: state.hoveredStateName
+    hoveredStateName: state.hoveredStateName,
   };
 };
 
-export default connect(mapStateToProps, { setMapLocation, setHoveredStateName })(Map);
+export default connect(mapStateToProps, { setMapLocation, setHoveredStateName, getMembers })(Map);

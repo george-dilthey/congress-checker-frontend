@@ -21,7 +21,7 @@ const MemberContainer = ({ clickedStateName, members }) => {
 
 const mapStateToProps = state => {
     return {
-      members: state.membersCard
+      members: state.members
     };
   };
   

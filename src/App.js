@@ -1,24 +1,19 @@
 import './App.css';
-import Map from './components/Map/Map.js'
-import { getMembersCard } from './redux/actionCreators';
+import Map from './components/Map/Map.js';
 import { connect } from "react-redux";
-import { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import MemberShow from './components/MemberShow/MemberShow';
 
-
-function App({getMembersCard}) {
-
-  useEffect(() => getMembersCard())
+function App() {
 
   return (
     <div>
       <Routes>
         <Route path="/map" element={<Map />} />
-        <Route path="/member/:memberId" element= {<MemberShow />} />
+        <Route path="/member/:congress/:memberId" element= {<MemberShow />} />
       </Routes>
     </div>
   );
 }
 
-export default connect(null, { getMembersCard })(App);
+export default connect(null, null)(App);
