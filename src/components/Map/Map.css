@@ -7,7 +7,7 @@
     height: 100vh;
   }
   
-  .topLabel {
+  .label {
     display: inline-block;
     position: absolute;
     bottom: 0;

@@ -5,6 +5,7 @@ import {setMapLocation, setHoveredStateName, getMembers} from '../../redux/actio
 import { connect } from "react-redux";
 import './Map.css';
 import MemberContainer from '../../containers/MemberContainer/MemberContainer.js'
+import MapSettings from '../MapSettings/MapSettings';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
@@ -133,11 +134,13 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
 
   return (
     <div>
-      <div className='topLabel'>
+      <div className='label'>
         <div>
           Longitude: {lon} | Latitude: {lat} | Zoom: {zoom}
+          
         </div>
       </div>
+      <MapSettings />
       <div className='map-container' ref={mapContainerRef} />
       {ReactDOM.createPortal(<MemberContainer clickedStateName = {clickedStateName} />, memberContainerRef.current)}
     </div>
