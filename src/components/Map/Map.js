@@ -83,7 +83,7 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
       setMap(map)
     });
 
-    return () => console.log('unmounting')
+    return () => map.remove()
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
   
   useEffect(() => {
