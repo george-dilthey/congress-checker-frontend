@@ -2,8 +2,8 @@ import './App.css';
 import Map from './components/Map/Map.js';
 import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-import MemberShow from './components/MemberShow/MemberShow';
 import NavBar from './components/NavBar/NavBar';
+import MemberShowContainer from './containers/MemberShowContainer/MemberShowContainer';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/map" element={<Map />} />
-        <Route path="/member/:congress/:memberId" element= {<MemberShow />} />
+        <Route path="/member/:congress/:memberId" element= {<MemberShowContainer />} />
       </Routes>
     </div>
   );

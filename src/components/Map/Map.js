@@ -135,7 +135,7 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
     <div>
       <div className='topLabel'>
         <div>
-          Longitude: {lon} | Latitude: {lat} | Zoom: {zoom} | Hovered State: {hoveredStateName}
+          Longitude: {lon} | Latitude: {lat} | Zoom: {zoom}
         </div>
       </div>
       <div className='map-container' ref={mapContainerRef} />

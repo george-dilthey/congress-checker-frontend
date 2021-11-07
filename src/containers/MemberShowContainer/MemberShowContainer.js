@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import './MemberShow.css'
+import './MemberShowContainer.css'
 import { useParams } from "react-router";
 import { getMember } from "../../redux/actionCreators";
 
