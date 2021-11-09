@@ -9,7 +9,10 @@ const MemberCard = ({ member }) => {
     <div className="column">
       <Link to={`/member/${member.congress}/${member.memberId}`}>
         <div className="card">
-          <img src={member.image225x275} alt={`${member.firstName} ${member.lastName}`}></img>
+          <img src={member.image225x275} alt={`${member.firstName} ${member.lastName}`} onError={(e)=>{
+            e.target.onerror = null; 
+            e.target.src=`${process.env.PUBLIC_URL}/assets/images/portrait-placeholder-grey.gif`
+            e.target.className = "placeholderImage"}}></img>
           <h4>{member.shortTitle} {member.firstName} {member.lastName} ({member.party})</h4>
         </div>
       </Link>

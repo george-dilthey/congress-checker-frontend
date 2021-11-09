@@ -5,7 +5,7 @@ import {setMapLocation, setHoveredStateName, getMembers} from '../../redux/actio
 import { connect } from "react-redux";
 import './Map.css';
 import MemberContainer from '../../containers/MemberContainer/MemberContainer.js'
-import MapSettings from '../MapSettings/MapSettings';
+import MapSettings from '../../containers/MapSettingsContainer/MapSettingsContainer';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';

@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import './MapSettings.css'
+import './MapSettingsContainer.css'
 
-const MapSettings = () => {
+const MapSettingsContainer = () => {
    
   return (
     <div className="settings">
@@ -11,4 +11,4 @@ const MapSettings = () => {
   );
 };
 
-export default connect(null, null)(MapSettings);
+export default connect(null, null)(MapSettingsContainer);
