@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import './MemberShow.css'
+import { Timeline } from 'react-twitter-widgets'
+
 
 const MemberShow = ({ m }) => {
   
@@ -9,7 +11,7 @@ const MemberShow = ({ m }) => {
   })
   
   return (
-    <div className="container">
+    <div>
       <div className="header">
         <img src={m.image225x275} alt={`${m.firstName} ${m.lastName}`}></img>
         <h4 className="title">{m.title}</h4>
@@ -29,8 +31,25 @@ const MemberShow = ({ m }) => {
           </div>
         </div>
       </div>
-      <div className="main"></div>
-      <div className="right-rail"></div>
+      <div className="main">
+        <div className="content"></div>
+        <div className="twitter">
+          <h2>Latest Tweets</h2>
+          <Timeline
+            dataSource={{
+              sourceType: 'profile',
+              screenName: `${m.twitterAccount}`
+            }}
+            options={{
+              height: '700',
+              chrome: "noheader"
+            }}          
+            renderError={_err =>
+              "Could not load timeline!"
+            }
+          />
+        </div>
+      </div>
     </div>
   );
 };
