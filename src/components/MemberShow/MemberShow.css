@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header header"
+    "main main main right-rail";
+}
+
+.header { 
+  grid-area: header; 
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.header-stats {
+  display: flex;
+  justify-content: center;
+  margin-top: 5gvh;
+}
+
+.header-stats .stat{
+  flex: 1;
+}
+
+.stat h1 {
+  margin: 0px;
+}
+
+.stat h5{
+  margin: 0px;
+}
+
+.main { 
+  grid-area: main; 
+}
+
+.right-rail { 
+  grid-area: right-rail; 
+}

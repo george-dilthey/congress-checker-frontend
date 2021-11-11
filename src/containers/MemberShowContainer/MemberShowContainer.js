@@ -12,11 +12,11 @@ const MemberShowContainer = ({ getMember, member }) => {
   
   useEffect(() => {
     getMember(congress, memberId)
-  }, [getMember])
+  }, [getMember, congress, memberId])
   
   return (
     <div>
-      <MemberShow member = {member} />
+      <MemberShow m = {member} />
     </div>  
   );
 };
