@@ -4,9 +4,9 @@ import './MemberCard.css'
 import MemberCard from "./MemberCard";
 
 
-const MemberContainer = ({ clickedStateName, members }) => {
+const MemberContainer = ({ clickedStateName, members, congressNumber }) => {
    
-  const memberCards = members.filter(m => m.stateName === clickedStateName && m.inOffice === "t") 
+  const memberCards = members.filter(m => m.stateName === clickedStateName && m.congress == congressNumber) 
   
   return (
     <div>
@@ -21,7 +21,8 @@ const MemberContainer = ({ clickedStateName, members }) => {
 
 const mapStateToProps = state => {
   return {
-    members: state.members
+    members: state.members,
+    congressNumber: state.congressNumber
   };
 };
   
