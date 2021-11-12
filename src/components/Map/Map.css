@@ -60,7 +60,7 @@
 }
 
 .options {
-  text-align: center;
+  text-align: right;
   flex: 50%;
 }
 
@@ -68,5 +68,4 @@ select {
   padding: 5px;
   border: none;
   cursor: pointer;
-  width: 50%;
 }

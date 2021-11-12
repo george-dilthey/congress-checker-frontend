@@ -4,9 +4,9 @@ import './MemberCard.css'
 import MemberCard from "./MemberCard";
 
 
-const MemberContainer = ({ clickedStateName, members, congressNumber }) => {
+const MemberContainer = ({ clickedStateName, members, congressNumber, chamber }) => {
    
-  const memberCards = members.filter(m => m.stateName === clickedStateName && m.congress == congressNumber) 
+  const memberCards = members.filter(m => m.stateName === clickedStateName && m.congress.toString() === congressNumber.toString() && m.chamber === chamber) 
   
   return (
     <div>
@@ -22,8 +22,23 @@ const MemberContainer = ({ clickedStateName, members, congressNumber }) => {
 const mapStateToProps = state => {
   return {
     members: state.members,
-    congressNumber: state.congressNumber
+    congressNumber: state.congressNumber,
+    chamber: state.chamber
   };
 };
   
-  export default connect(mapStateToProps, null)(MemberContainer);
+  export default connect(mapStateToProps, null)(MemberContainer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
