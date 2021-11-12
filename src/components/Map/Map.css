@@ -1,40 +1,72 @@
 .map-container {
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-  }
-  
-  .label {
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 12px;
-    background-color: #404040;
-    color: #ffffff;
-    z-index: 1 !important;
-    padding: 6px;
-    font-weight: bold;
-  }
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
 
-  .mapboxgl-popup {
-      max-width: 600px !important;
-  }
+.label {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 12px;
+  background-color: #404040;
+  color: #ffffff;
+  z-index: 1 !important;
+  padding: 6px;
+  font-weight: bold;
+}
 
-  .settings {
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 12px;
-    background-color: #404040;
-    color: #ffffff;
-    z-index: 1 !important;
-    padding: 6px;
-    font-weight: bold;
-    height: 20vh;
-    width: 25vw;
-  }
+.mapboxgl-popup {
+    max-width: 600px !important;
+}
+
+.settings-container {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 12px;
+  background-color: #404040;
+  color: #ffffff;
+  z-index: 1 !important;
+  padding: 6px;
+  font-weight: bold;
+  height: 20vh;
+  width: 25vw;
+}
+
+.settings-container h4 {
+  margin: 0 0 1vh 0;
+}
+
+.setting {
+  display: flex;
+  margin-bottom: 1vh;
+}  
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.title h5 {
+  margin: 0;
+  flex: 50%;
+}
+
+.options {
+  text-align: center;
+  flex: 50%;
+}
+
+select {
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
