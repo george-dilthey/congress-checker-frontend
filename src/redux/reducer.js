@@ -16,7 +16,7 @@ export default function reducer(state=initialState, {type, payload}){
         case 'HOVER_STATE': 
             return {...state, hoveredStateName: payload};
         case 'GET_MEMBERS':
-            return {...state, members: payload};
+            return {...state, selectedMember: {}, members: payload};
         case 'GET_MEMBER':
             return {...state, selectedMember: payload};        
         default:

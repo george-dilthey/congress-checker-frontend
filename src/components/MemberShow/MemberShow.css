@@ -16,24 +16,30 @@
   flex: 1;
 }
 
-.stat h1 {
+.stat h2 {
+  padding: 0px;
   margin: 0px;
+  font-size: 2em;
 }
 
 .stat h5{
   margin: 0px;
 }
 
+h1 {
+  font-size: 3em;
+  margin-left: -10vh;
+  border-bottom: 1px solid black;
+}
+
+
 .twitter {
-  margin: 2vh 5vw 0 0; 
-  width: 33vw;
-  padding-left: 2vw;
-  border-left: 1px solid black;
-  text-align: center;
+  margin: 2vh 0 0 0; 
+  width: 40vw;
 }
 
 
 .main {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
