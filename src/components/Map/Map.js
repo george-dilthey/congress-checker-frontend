@@ -4,13 +4,13 @@ import mapboxgl from 'mapbox-gl';
 import {setMapLocation, setHoveredStateName, getMembers} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
-import MemberContainer from '../../containers/MemberContainer/MemberContainer.js'
-import MapSettings from '../../containers/MapSettingsContainer/MapSettingsContainer';
+import MemberContainer from '../MemberCard/MemberContainer.js'
+import MapSettings from './MapSettingsContainer';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
-const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getMembers}) => {
+const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getMembers}) => {
   const mapContainerRef = useRef(null);
   const memberContainerRef = useRef(document.createElement('div'));
 
@@ -137,11 +137,11 @@ const Map = ({hoveredStateName, mapLocation, mapLocation: {lon, lat, zoom}, setM
       <div className='label'>
         <div>
           Longitude: {lon} | Latitude: {lat} | Zoom: {zoom}
-          
         </div>
       </div>
       <MapSettings />
       <div className='map-container' ref={mapContainerRef} />
+
       {ReactDOM.createPortal(<MemberContainer clickedStateName = {clickedStateName} />, memberContainerRef.current)}
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import './MemberContainer.css'
-import MemberCard from "../../components/MemberCard/MemberCard";
+import './MemberCard.css'
+import MemberCard from "./MemberCard";
 
 
 const MemberContainer = ({ clickedStateName, members }) => {
@@ -20,9 +20,9 @@ const MemberContainer = ({ clickedStateName, members }) => {
 };
 
 const mapStateToProps = state => {
-    return {
-      members: state.members
-    };
+  return {
+    members: state.members
   };
+};
   
   export default connect(mapStateToProps, null)(MemberContainer);

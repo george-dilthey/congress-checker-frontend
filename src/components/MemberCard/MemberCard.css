@@ -32,3 +32,8 @@
       margin-bottom: 20px;
     }
   }
+
+  .row {
+    max-width: 450px;
+    margin: 0 -5px;
+  }

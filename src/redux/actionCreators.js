@@ -12,6 +12,13 @@ export const setHoveredStateName = (stateName) => {
     })
 }
 
+export const setCongressNumber = (congressNumber) => {
+    return dispatch => dispatch({
+        type: 'CONGRESS_NUMBER',
+        payload: congressNumber
+    })
+}
+
 export const getMembers = () => {
     return dispatch => fetch('http://localhost:3000/api/v1/members')
     .then(response => response.json())
