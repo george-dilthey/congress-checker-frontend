@@ -13,22 +13,27 @@ const MemberShow = ({ m }) => {
   return (
     <div>
       <div className="header">
-        <img src={m.image225x275} alt={`${m.firstName} ${m.lastName}`}></img>
-        <h4 className="title">{m.title}</h4>
-        <h2 className="name">{m.firstName} {m.middleName} {m.lastName}</h2>
-        <div className="header-stats">
-          <div className="stat">
-            <h2>{m.missedVotes}</h2>
-            <h5>Missed Votes</h5>
-          </div>
-          <div className="stat">
-            <h2>{m.totalVotes}</h2>
-            <h5>Total Votes</h5>
-          </div>
-          <div className="stat">
-            <h2>{m.votesWithPartyPct}%</h2>
-            <h5>Votes with Party</h5>
-          </div>
+        <div>
+          <img src={m.image450x550} alt={`${m.firstName} ${m.lastName}`}></img>
+        </div>
+        <div className="header-text">
+          <h4 className="title">{m.title}</h4>
+          <h1 className="name">{m.firstName} {m.middleName} {m.lastName}</h1>
+        </div>
+      </div>
+  
+      <div className="header-stats">
+        <div className="stat">
+          <h2>{m.missedVotes}</h2>
+          <h5>Missed Votes</h5>
+        </div>
+        <div className="stat">
+          <h2>{m.totalVotes}</h2>
+          <h5>Total Votes</h5>
+        </div>
+        <div className="stat">
+          <h2>{m.votesWithPartyPct}%</h2>
+          <h5>Votes with Party</h5>
         </div>
       </div>
       <div className="main">

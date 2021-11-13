@@ -13,16 +13,17 @@
     padding: 5px;
     text-align: center;
     background-color: #f1f1f1;
+    margin-bottom: 2vh;
   }
   
   .card img {
-    width: 150px;
+    width: 75px;
     border-radius: 50%;
   }
   
   .placeholder {
-    width: 150px;
-    height: 300px;
+    width: 75px;
+    height: 150px;
   }
   
   @media screen and (max-width: 600px) {
@@ -34,6 +35,8 @@
   }
 
   .row {
-    max-width: 450px;
+    width: 500px;
     margin: 0 -5px;
+    overflow-y:auto;
+    max-height: 50vh;
   }

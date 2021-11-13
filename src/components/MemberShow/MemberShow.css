@@ -1,8 +1,33 @@
 .header { 
-  justify-content: center;
-  text-align: center;
-  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #E8DBCC;
+  padding: 2vh;
 }
+
+.header-text {
+}
+
+h1 {
+  font-size: 3em;
+  margin-top: 0;
+
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+img {
+  max-height: 40vh;
+  box-shadow: 10px 10px 5px grey;
+}
+
+
+
+
 
 .header-stats {
   display: flex;
@@ -26,11 +51,7 @@
   margin: 0px;
 }
 
-h1 {
-  font-size: 3em;
-  margin-left: -10vh;
-  border-bottom: 1px solid black;
-}
+
 
 
 .twitter {
