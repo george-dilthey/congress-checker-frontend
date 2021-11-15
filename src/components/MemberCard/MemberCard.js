@@ -7,7 +7,7 @@ const MemberCard = ({ member }) => {
    
   return (
     <div className="column">
-      <Link to={`/member/${member.congress}/${member.memberId}`}>
+      <Link to={`/members/${member.mid}`}>
         <div className="card">
           <img src={member.image225x275} alt={`${member.firstName} ${member.lastName}`} onError={(e)=>{
             e.target.onerror = null; 

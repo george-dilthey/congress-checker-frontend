@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/map" element={<Map />} />
-        <Route path="/member/:congress/:memberId" element= {<MemberShowContainer />} />
+        <Route path="/members/:mid" element= {<MemberShowContainer />} />
       </Routes>
     </div>
   );

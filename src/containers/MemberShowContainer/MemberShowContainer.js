@@ -7,12 +7,12 @@ import MemberShow from "../../components/MemberShow/MemberShow";
 
 const MemberShowContainer = ({ getMember, member }) => {
   
-  const congress = useParams().congress
-  const memberId = useParams().memberId
+
+  const mid = useParams().mid
   
   useEffect(() => {
-    getMember(congress, memberId)
-  }, [getMember, congress, memberId])
+    getMember(mid)
+  }, [getMember, mid])
   
   return (
     <div>

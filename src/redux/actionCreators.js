@@ -33,8 +33,8 @@ export const getRoles = () => {
     .then(data => dispatch({type: 'GET_ROLES', payload: data}));
 }
 
-export const getMember = (congress, id) => {
-    return dispatch => fetch(`http://localhost:3000/api/v1/members/${congress}/${id}`)
+export const getMember = (mid) => {
+    return dispatch => fetch(`http://localhost:3000/api/v1/members/${mid}`)
     .then(response => response.json())
     .then(data => dispatch({type: 'GET_MEMBER', payload: data}));
 }

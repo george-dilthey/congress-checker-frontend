@@ -6,7 +6,7 @@ import MemberCard from "./MemberCard";
 
 const MemberContainer = ({ clickedStateName, roles, congressNumber, chamber }) => {
    
-  const memberCards = roles.filter(r => r.congress.toString() === congressNumber.toString() && r.chamber === chamber) 
+  const memberCards = roles.filter(r => r.stateName === clickedStateName && r.congress.toString() === congressNumber.toString() && r.chamber === chamber) 
   
   return (
     <div>
