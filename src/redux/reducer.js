@@ -6,8 +6,8 @@ const initialState = {
     },
     hoveredStateName: '',
     congressNumber: 117,
-    chamber: 'senate',
-    members: [],
+    chamber: 'Senate',
+    roles: [],
     selectedMember: {}
 }
 
@@ -17,8 +17,8 @@ export default function reducer(state=initialState, {type, payload}){
             return {...state, mapLocation: payload};
         case 'HOVER_STATE': 
             return {...state, hoveredStateName: payload};
-        case 'GET_MEMBERS':
-            return {...state, selectedMember: {}, members: payload};
+        case 'GET_ROLES':
+            return {...state, selectedMember: {}, roles: payload};
         case 'GET_MEMBER':
             return {...state, selectedMember: payload};
         case 'SET_CONGRESS_NUMBER':

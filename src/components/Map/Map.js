@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
-import {setMapLocation, setHoveredStateName, getMembers} from '../../redux/actionCreators'
+import {setMapLocation, setHoveredStateName, getRoles} from '../../redux/actionCreators'
 import { connect } from "react-redux";
 import './Map.css';
 import MemberContainer from '../MemberCard/MemberContainer.js'
@@ -10,7 +10,7 @@ import MapSettings from './MapSettings';
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
-const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getMembers}) => {
+const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getRoles}) => {
   const mapContainerRef = useRef(null);
   const memberContainerRef = useRef(document.createElement('div'));
 
@@ -21,7 +21,7 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
   const [map, setMap] = useState(null)
 
   useEffect(() => {
-    getMembers()
+    getRoles()
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -154,4 +154,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { setMapLocation, setHoveredStateName, getMembers })(Map);
+export default connect(mapStateToProps, { setMapLocation, setHoveredStateName, getRoles })(Map);

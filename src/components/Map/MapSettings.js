@@ -52,8 +52,8 @@ const MapSettings = ({setCongressNumber, setChamber, chamber, congressNumber}) =
         </div>
         <div className = "options">   
           <select value={ chamber } onChange={e => {handleChamberChange(e)}}>
-            <option value="senate">Senate</option>
-            <option value="house">House</option>
+            <option value="Senate">Senate</option>
+            <option value="House">House</option>
           </select>
         </div>
       </div>

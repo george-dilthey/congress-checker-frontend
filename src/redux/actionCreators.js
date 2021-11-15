@@ -27,10 +27,10 @@ export const setChamber = (chamber) => {
 }
 
 
-export const getMembers = () => {
-    return dispatch => fetch('http://localhost:3000/api/v1/members')
+export const getRoles = () => {
+    return dispatch => fetch('http://localhost:3000/api/v1/roles')
     .then(response => response.json())
-    .then(data => dispatch({type: 'GET_MEMBERS', payload: data}));
+    .then(data => dispatch({type: 'GET_ROLES', payload: data}));
 }
 
 export const getMember = (congress, id) => {

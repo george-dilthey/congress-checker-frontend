@@ -4,15 +4,15 @@ import './MemberCard.css'
 import MemberCard from "./MemberCard";
 
 
-const MemberContainer = ({ clickedStateName, members, congressNumber, chamber }) => {
+const MemberContainer = ({ clickedStateName, roles, congressNumber, chamber }) => {
    
-  const memberCards = members.filter(m => m.stateName === clickedStateName && m.congress.toString() === congressNumber.toString() && m.chamber === chamber) 
+  const memberCards = roles.filter(r => r.congress.toString() === congressNumber.toString() && r.chamber === chamber) 
   
   return (
     <div>
       <div className="row">
-        {memberCards.map(m =>
-          <MemberCard member={m} key={m.memberId} />
+        {memberCards.map(r =>
+          <MemberCard member={r.member} key={r.member.mid} />
         )}  
       </div>
     </div>
@@ -21,7 +21,7 @@ const MemberContainer = ({ clickedStateName, members, congressNumber, chamber })
 
 const mapStateToProps = state => {
   return {
-    members: state.members,
+    roles: state.roles,
     congressNumber: state.congressNumber,
     chamber: state.chamber
   };
