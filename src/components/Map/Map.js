@@ -10,7 +10,7 @@ import MapSettings from './MapSettings';
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
-const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getRoles, hideLoader, showLoader}) => {
+const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getRoles, hideLoader, showLoader, roles}) => {
   const mapContainerRef = useRef(null);
   const memberContainerRef = useRef(document.createElement('div'));
 
@@ -22,7 +22,7 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
 
   useEffect(() => {
     showLoader()
-    getRoles()
+    
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -83,7 +83,13 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
       });
 
       setMap(map)
-      hideLoader()
+      
+      if(roles.length == 0){
+        getRoles().then(() => hideLoader())
+      }
+      else {
+        hideLoader()
+      }
 
     });
 
@@ -155,6 +161,7 @@ const mapStateToProps = state => {
   return {
     mapLocation: state.mapLocation,
     hoveredStateName: state.hoveredStateName,
+    roles: state.roles
   };
 };
 
