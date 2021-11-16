@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import './MemberShow.css'
-import { Timeline } from 'react-twitter-widgets'
 import { useParams } from "react-router";
 import { getMember } from "../../redux/actionCreators";
+import TwitterTimeline from "./TwitterTimeline";
 
 const MemberShow = ({ m, getMember }) => {
   
   const mid = useParams().mid
   const latestRole = m.roles[0]
+
   
   useEffect(() => {
     getMember(mid)
@@ -36,19 +37,7 @@ const MemberShow = ({ m, getMember }) => {
           <div className="section-title">
             <h1>Latest Tweets</h1>
           </div>
-          <Timeline
-            dataSource={{
-              sourceType: 'profile',
-              screenName: `${m.twitterAccount}`
-            }}
-            options={{
-              height: '700',
-              chrome: "noheader"
-            }}          
-            renderError={_err =>
-              "Could not load timeline!"
-            }
-          />
+          <TwitterTimeline handle={m.twitterAccount} />
         </div>
       </div>
     </div>
