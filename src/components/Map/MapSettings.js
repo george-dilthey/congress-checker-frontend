@@ -18,7 +18,6 @@ const MapSettings = ({setCongressNumber, setChamber, chamber, congressNumber}) =
 
   return (
     <div className="settings-container">
-      <h4>This is where you can set up your settings.</h4>
       <div className="setting">
         <div className="title">  
           <h5>Congress Number:</h5>

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import './MemberCard.css'
 import { Link } from "react-router-dom";
 
-const MemberCard = ({ member }) => {
+const MemberCard = ({ member, r }) => {
    
   return (
     <div className="column">
@@ -13,7 +13,7 @@ const MemberCard = ({ member }) => {
             e.target.onerror = null; 
             e.target.src=`${process.env.PUBLIC_URL}/assets/images/portrait-placeholder-grey.gif`
             e.target.className = "placeholderImage"}}></img>
-          <h4>{member.shortTitle} {member.firstName} {member.lastName} ({member.party})</h4>
+          <h4>{member.shortTitle} {member.firstName} {member.lastName} ({r.party})</h4>
         </div>
       </Link>
     </div>  

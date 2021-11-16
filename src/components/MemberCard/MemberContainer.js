@@ -12,7 +12,7 @@ const MemberContainer = ({ clickedStateName, roles, congressNumber, chamber }) =
     <div>
       <div className="row">
         {memberCards.map(r =>
-          <MemberCard member={r.member} key={r.member.mid} />
+          <MemberCard r={r} member={r.member} key={r.member.mid} />
         )}  
       </div>
     </div>

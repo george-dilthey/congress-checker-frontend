@@ -10,7 +10,7 @@ import MapSettings from './MapSettings';
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
-const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getRoles}) => {
+const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateName, getRoles, hideLoader, showLoader}) => {
   const mapContainerRef = useRef(null);
   const memberContainerRef = useRef(document.createElement('div'));
 
@@ -21,6 +21,7 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
   const [map, setMap] = useState(null)
 
   useEffect(() => {
+    showLoader()
     getRoles()
 
     const map = new mapboxgl.Map({
@@ -82,6 +83,8 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
       });
 
       setMap(map)
+      hideLoader()
+
     });
 
     return () => map.remove()
@@ -130,6 +133,7 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
         map.getCanvas().style.cursor = '';
       });
     }
+
   });
 
   return (

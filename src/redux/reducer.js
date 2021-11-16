@@ -8,7 +8,7 @@ const initialState = {
     congressNumber: 117,
     chamber: 'Senate',
     roles: [],
-    selectedMember: {}
+    selectedMember: {...{}, roles: [{}]}
 }
 
 export default function reducer(state=initialState, {type, payload}){
@@ -18,7 +18,7 @@ export default function reducer(state=initialState, {type, payload}){
         case 'HOVER_STATE': 
             return {...state, hoveredStateName: payload};
         case 'GET_ROLES':
-            return {...state, selectedMember: {}, roles: payload};
+            return {...state, selectedMember: {...{}, roles: [{}]}, roles: payload};
         case 'GET_MEMBER':
             return {...state, selectedMember: payload};
         case 'SET_CONGRESS_NUMBER':
