@@ -6,6 +6,7 @@
     float: left;
     width: 50%;
     padding: 0 10px;
+    text-decoration: none;
   }
   
   .card {
@@ -14,16 +15,6 @@
     text-align: center;
     background-color: #f1f1f1;
     margin-bottom: 2vh;
-  }
-  
-  .card img {
-    width: 75px;
-    border-radius: 50%;
-  }
-  
-  .placeholder {
-    width: 75px;
-    height: 150px;
   }
   
   @media screen and (max-width: 600px) {
