@@ -1,25 +1,19 @@
 .header { 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
   background: #E8DBCC;
-  padding: 2vh;
+  height: 25vh;
+}
+.header-text {
+  text-align: center;
+  margin-top: -10vh;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   margin-top: 0;
-
 }
 
 h4 {
   margin-bottom: 0;
-}
-
-img {
-  max-height: 40vh;
-  box-shadow: 10px 10px 5px grey;
 }
 
 .header-stats {

@@ -4,6 +4,8 @@ import './MemberShow.css'
 import { useParams } from "react-router";
 import { getMember } from "../../redux/actionCreators";
 import TwitterTimeline from "./TwitterTimeline";
+import { Box, Grid, Container, Typography, Avatar } from '@mui/material';
+
 
 const MemberShow = ({ m, getMember }) => {
   
@@ -17,29 +19,69 @@ const MemberShow = ({ m, getMember }) => {
    
   return (
     <div>
-      <div className="header">
-        <div>
-        <img src={m.image450x550} alt={`${m.firstName} ${m.lastName}`} onError={(e)=>{
-            e.target.onerror = null; 
-            e.target.src=`${process.env.PUBLIC_URL}/assets/images/portrait-placeholder-grey.gif`
-            e.target.className = "placeholderImage"}}></img>
-        </div>
-        <div className="header-text">
+      <div className="header"> 
+      </div>
+        <Avatar
+          alt={`${m.firstName} ${m.lastName}`}
+          src={m.image450x550}
+          sx={{ width: 200, height: 200, margin: "auto", transform: "translate(0, -50%)", boxShadow: "0 5px 15px -8px black"}}
+        />
+      <div className="header-text">
           <h4 className="title">{latestRole.title}</h4>
           <h1 className="name">{m.firstName} {m.middleName} {m.lastName}</h1>
-        </div>
       </div>
 
-      <div className="main">
-        <div className="content"></div>
-        
-        <div className="twitter">
-          <div className="section-title">
-            <h1>Latest Tweets</h1>
-          </div>
-          <TwitterTimeline handle={m.twitterAccount} />
-        </div>
-      </div>
+      <Container maxWidth="xl">
+        <Box sx={{ pb: 5 }}>
+          <Typography variant="h4">Hi, Welcome back</Typography>
+        </Box>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6} md={3}>
+            <TwitterTimeline handle={m.twitterAccount} />            
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={8}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={8}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={8}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={8}>
+            <TwitterTimeline handle={m.twitterAccount} /> 
+          </Grid>
+        </Grid>
+      </Container>    
+
     </div>
   );
 };
