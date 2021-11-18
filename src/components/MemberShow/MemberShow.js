@@ -4,7 +4,7 @@ import './MemberShow.css'
 import { useParams } from "react-router";
 import { getMember } from "../../redux/actionCreators";
 import TwitterTimeline from "./TwitterTimeline";
-import { Box, Grid, Container, Typography, Avatar } from '@mui/material';
+import { Divider, Grid, Container, Avatar, Paper } from '@mui/material';
 
 
 const MemberShow = ({ m, getMember }) => {
@@ -30,55 +30,49 @@ const MemberShow = ({ m, getMember }) => {
           <h4 className="title">{latestRole.title}</h4>
           <h1 className="name">{m.firstName} {m.middleName} {m.lastName}</h1>
       </div>
+      <Divider variant="middle" sx={{ mb: 5 }} />
+
 
       <Container maxWidth="xl">
-        <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">Hi, Welcome back</Typography>
-        </Box>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <TwitterTimeline handle={m.twitterAccount} />            
+        <Grid container spacing={3} justifyContent="space-evenly" alignItems="center">
+          <Grid item xs={12} sm={6} md={3} >
+            <Paper elevation={3} sx={{
+                  p: 2,
+                  bgcolor: '#D0F2FF',
+                  textAlign: 'center'
+                }}>
+              <h1>{latestRole.stateName}</h1>
+            </Paper>            
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
+          <Grid item xs={12} sm={6} md={3} >
+            <Paper elevation={3} sx={{
+                  p: 2,
+                  bgcolor: '#D0F2FF',
+                  textAlign: 'center'
+                }}>
+              <h1>{latestRole.stateName}</h1>
+            </Paper>          
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
+          <Grid item xs={12} sm={6} md={3} >
+            <Paper elevation={3} sx={{
+                  p: 2,
+                  bgcolor: '#D0F2FF',
+                  textAlign: 'center'
+                }}>
+              <h1>{latestRole.stateName}</h1>
+            </Paper>          
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
+          <Grid item xs={12} sm={6} md={3} >
+            <Paper elevation={3} sx={{
+                  p: 2,
+                  bgcolor: '#D0F2FF',
+                  textAlign: 'center'
+                }}>
+              <h1>{latestRole.stateName}</h1>
+            </Paper>          
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <TwitterTimeline handle={m.twitterAccount} /> 
-          </Grid>
+          
         </Grid>
       </Container>    
 
