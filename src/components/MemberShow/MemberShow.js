@@ -4,7 +4,8 @@ import './MemberShow.css'
 import { useParams } from "react-router";
 import { getMember } from "../../redux/actionCreators";
 import TwitterTimeline from "./TwitterTimeline";
-import { Divider, Grid, Container, Avatar, Paper } from '@mui/material';
+import { Divider, Grid, Container, Avatar } from '@mui/material';
+import Stat from "./Stat";
 
 
 const MemberShow = ({ m, getMember }) => {
@@ -28,7 +29,7 @@ const MemberShow = ({ m, getMember }) => {
         />
       <div className="header-text">
           <h4 className="title">{latestRole.title}</h4>
-          <h1 className="name">{m.firstName} {m.middleName} {m.lastName}</h1>
+          <h2 className="name">{m.firstName} {m.middleName} {m.lastName}</h2>
       </div>
       <Divider variant="middle" sx={{ mb: 5 }} />
 
@@ -36,42 +37,24 @@ const MemberShow = ({ m, getMember }) => {
       <Container maxWidth="xl">
         <Grid container spacing={3} justifyContent="space-evenly" alignItems="center">
           <Grid item xs={12} sm={6} md={3} >
-            <Paper elevation={3} sx={{
-                  p: 2,
-                  bgcolor: '#D0F2FF',
-                  textAlign: 'center'
-                }}>
-              <h1>{latestRole.stateName}</h1>
-            </Paper>            
+            <Stat stat={latestRole.stateName} statText={'State'} bgcolor='#D0F2FF' />           
           </Grid>
           <Grid item xs={12} sm={6} md={3} >
-            <Paper elevation={3} sx={{
-                  p: 2,
-                  bgcolor: '#D0F2FF',
-                  textAlign: 'center'
-                }}>
-              <h1>{latestRole.stateName}</h1>
-            </Paper>          
+            <Stat stat={latestRole.billsSponsored} statText={'Bills Sponsored'} bgcolor='#C8FACD'  />           
           </Grid>
           <Grid item xs={12} sm={6} md={3} >
-            <Paper elevation={3} sx={{
-                  p: 2,
-                  bgcolor: '#D0F2FF',
-                  textAlign: 'center'
-                }}>
-              <h1>{latestRole.stateName}</h1>
-            </Paper>          
+            <Stat stat={latestRole.votesWithPartyPct + '%'} statText={'Votes With Party'} bgcolor='#FFF7CD'  />           
           </Grid>
           <Grid item xs={12} sm={6} md={3} >
-            <Paper elevation={3} sx={{
-                  p: 2,
-                  bgcolor: '#D0F2FF',
-                  textAlign: 'center'
-                }}>
-              <h1>{latestRole.stateName}</h1>
-            </Paper>          
+            <Stat stat={latestRole.missedVotes} statText={'Missed Votes'} bgcolor='#FFE7D9' />           
           </Grid>
 
+          <Grid item xs={12} md={6} lg={8}>
+            <Stat stat={latestRole.missedVotes} statText={'Missed Votes'} bgcolor='#FFE7D9' />           
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <TwitterTimeline handle={m.twitterAccount} />
+          </Grid>
           
         </Grid>
       </Container>    
