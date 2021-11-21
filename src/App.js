@@ -5,7 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar';
 import MemberShow from './components/MemberShow/MemberShow';
 
-function App() {
+function App({user}) {
+  console.log(user)
 
   const loader = document.querySelector('.loader');
 
@@ -14,7 +15,6 @@ function App() {
 
   return (
     <div>
-      
       <NavBar />
       <Routes>
         <Route path="/map" element={<Map hideLoader={hideLoader} showLoader={showLoader} />} />
@@ -24,4 +24,6 @@ function App() {
   );
 }
 
-export default connect(null, null)(App);
+const mapStateToProps = (state) => ({user: state.user})
+
+export default connect(mapStateToProps, null)(App); 

@@ -26,7 +26,6 @@ export const setChamber = (chamber) => {
     })
 }
 
-
 export const getRoles = () => {
     return dispatch => fetch('http://localhost:3000/api/v1/roles')
     .then(response => response.json())

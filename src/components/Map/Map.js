@@ -83,8 +83,8 @@ const Map = ({ mapLocation: {lon, lat, zoom}, setMapLocation, setHoveredStateNam
       });
 
       setMap(map)
-      
-      if(roles.length == 0){
+
+      if(roles.length === 0){
         getRoles().then(() => hideLoader())
       }
       else {

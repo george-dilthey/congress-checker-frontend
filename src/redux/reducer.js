@@ -8,7 +8,10 @@ const initialState = {
     congressNumber: 117,
     chamber: 'Senate',
     roles: [],
-    selectedMember: {...{}, roles: [{}]}
+    selectedMember: {...{}, roles: [{}]},
+    user: {
+        username: ""
+    }
 }
 
 export default function reducer(state=initialState, {type, payload}){

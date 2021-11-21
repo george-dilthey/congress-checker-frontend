@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
+import AuthModal from "../Auth/AuthModal";
 
 
 
@@ -22,31 +23,11 @@ const MemberCard = ({ member, r }) => {
             sx={{ width: 100, height: 100, margin: "auto" }}
           />
           <h4>{member.shortTitle} {member.firstName} {member.lastName} ({r.party})</h4>
-          <Link to={''} style={{textDecoration: 'none'}}><Button variant="outlined" size="small" sx={{ m: 1, width: 150 }}>Follow</Button></Link>
-          <Link to={`/members/${member.mid}`} style={{textDecoration: 'none'}}><Button variant="contained" size="small" sx={{width: 150, textDecoration: "none" }}>Learn More</Button></Link>
+          <AuthModal />
+          <Link to={`/members/${member.mid}`} ><Button variant="contained" size="small" sx={{width: 150, textDecoration: "none" }}>Learn More</Button></Link>
         </CardContent>
       <Divider light />
       </Card>
-      {/* 
-        <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(3, 1fr)', textAlign: "center" }}>
-          
-          
-          
-        
-          <h4>{member.shortTitle} {member.firstName} {member.lastName} ({r.party})</h4>
-        
-        
-          
-          
-        </Box>
-        <div className="card">
-          
-          <div>
-            
-          </div>
-          
-        </div>
-      </Link> */}
       
     </div>  
   );
