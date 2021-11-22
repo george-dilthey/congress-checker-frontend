@@ -14,8 +14,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function SignIn({setSignInFalse}) {
-    console.log('rendered SignIn')
-  const handleSubmit = (event) => {
+
+    const [email, setEmail] = React.useState("")
+    const [password, setPassword] = React.useState("")
+  
+    const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -52,6 +55,8 @@ export default function SignIn({setSignInFalse}) {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange = {(e) => setEmail(e.target.value)}
+
             />
             <TextField
               margin="normal"
@@ -62,6 +67,8 @@ export default function SignIn({setSignInFalse}) {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange = {(e) => setPassword(e.target.value)}
+
             />
             <Button
               type="submit"

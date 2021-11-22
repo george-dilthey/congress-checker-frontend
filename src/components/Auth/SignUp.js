@@ -13,7 +13,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function SignUp({setSignInTrue}) {
-  const handleSubmit = (event) => {
+    
+    const [firstName, setFirstName] = React.useState("")
+    const [lastName, setLastName] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [password, setPassword] = React.useState("")
+
+    const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -51,6 +57,7 @@ export default function SignUp({setSignInTrue}) {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange = {(e) => setFirstName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -61,6 +68,7 @@ export default function SignUp({setSignInTrue}) {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange = {(e) => setLastName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -71,6 +79,7 @@ export default function SignUp({setSignInTrue}) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange = {(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -82,6 +91,7 @@ export default function SignUp({setSignInTrue}) {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange = {(e) => setPassword(e.target.value)}
                 />
               </Grid>
             </Grid>
