@@ -9,10 +9,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {submitSignup} from '../../redux/actionCreators'
+import { connect } from 'react-redux';
 
 const theme = createTheme();
 
-export default function SignUp({setSignInTrue}) {
+function SignUp({setSignInTrue, submitSignup}) {
     
     const [firstName, setFirstName] = React.useState("")
     const [lastName, setLastName] = React.useState("")
@@ -21,12 +23,7 @@ export default function SignUp({setSignInTrue}) {
 
     const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    submitSignup({first_name: firstName, last_name: lastName, email, password})
   };
 
   return (
@@ -116,3 +113,5 @@ export default function SignUp({setSignInTrue}) {
     </ThemeProvider>
   );
 }
+
+export default connect(null, {submitSignup})(SignUp);

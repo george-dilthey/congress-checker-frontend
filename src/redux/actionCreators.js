@@ -37,3 +37,27 @@ export const getMember = (mid) => {
     .then(response => response.json())
     .then(data => dispatch({type: 'GET_MEMBER', payload: data}));
 }
+
+export const submitSignup = (user) => {
+    return dispatch => fetch('http://localhost:3000/api/v1/users', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      })
+      .then(res => res.json())
+      .then(console.log)
+}
+
+export const submitLogin = (user) => {
+    return dispatch => fetch('http://localhost:3000/api/v1/sessions', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      })
+      .then(res => res.json())
+      .then(console.log)
+} 

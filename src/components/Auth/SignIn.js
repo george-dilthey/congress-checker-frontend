@@ -9,24 +9,20 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {submitLogin} from '../../redux/actionCreators'
+import { connect } from 'react-redux';
 
 const theme = createTheme();
 
-export default function SignIn({setSignInFalse}) {
+function SignIn({setSignInFalse, submitLogin}) {
 
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
   
     const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+        event.preventDefault();
+        submitLogin({email, password})
+    };
 
   return (
     <ThemeProvider theme={theme}>
@@ -91,3 +87,5 @@ export default function SignIn({setSignInFalse}) {
     </ThemeProvider>
   );
 }
+
+export default connect(null, {submitLogin})(SignIn);
