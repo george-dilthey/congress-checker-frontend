@@ -11,12 +11,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {submitLogin} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router';
 
 const theme = createTheme();
 
 function SignIn({setSignInFalse, submitLogin, handleClose}) {
     
-	
+	const path = useLocation().pathname
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
   
@@ -78,7 +79,7 @@ function SignIn({setSignInFalse, submitLogin, handleClose}) {
             </Button>
             <Grid container>
               <Grid item>
-              <Link variant="body2">
+              <Link href={path === '/signin' ? '/signup' : null} variant="body2">
                   <p onClick={setSignInFalse}>Don't have an account? Sign up!</p>
                 </Link>
               </Grid>

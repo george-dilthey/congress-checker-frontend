@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar';
 import MemberShow from './components/MemberShow/MemberShow';
+import SignUp from './components/Auth/SignUp';
+import SignIn from './components/Auth/SignIn';
 
 function App({user}) {
   console.log(user)
@@ -19,6 +21,10 @@ function App({user}) {
       <Routes>
         <Route path="/map" element={<Map hideLoader={hideLoader} showLoader={showLoader} />} />
         <Route path="/members/:mid" element= {<MemberShow />} />
+        <Route path="/signup" element= {<SignUp />} />
+        <Route path="/signin" element= {<SignIn />} />
+
+
       </Routes>
     </div>
   );
