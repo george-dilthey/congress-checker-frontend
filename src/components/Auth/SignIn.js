@@ -14,14 +14,16 @@ import { connect } from 'react-redux';
 
 const theme = createTheme();
 
-function SignIn({setSignInFalse, submitLogin}) {
-
+function SignIn({setSignInFalse, submitLogin, handleClose}) {
+    
+	
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
   
     const handleSubmit = (event) => {
         event.preventDefault();
         submitLogin({email, password})
+        handleClose()
     };
 
   return (

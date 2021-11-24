@@ -10,7 +10,7 @@ const initialState = {
     roles: [],
     selectedMember: {...{}, roles: [{}]},
     user: {
-        username: ""
+        email: ""
     }
 }
 
@@ -27,7 +27,9 @@ export default function reducer(state=initialState, {type, payload}){
         case 'SET_CONGRESS_NUMBER':
             return {...state, congressNumber: payload};
         case 'SET_CHAMBER':
-            return {...state, chamber: payload};               
+            return {...state, chamber: payload};
+        case 'SET_USER':
+            return {...state, user: payload};                 
         default:
             return {...state};    
     }
