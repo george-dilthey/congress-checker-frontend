@@ -8,23 +8,31 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import FormHelperText from '@mui/material/FormHelperText';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {submitLogin} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const theme = createTheme();
 
-function SignIn({setSignInFalse, submitLogin, handleClose}) {
-    
+function SignIn({setSignInFalse, submitLogin}) {
+
+    let [error, setError] = React.useState(null);
+    const navigate = useNavigate()
+
 	const path = useLocation().pathname
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
   
     const handleSubmit = (event) => {
         event.preventDefault();
-        submitLogin({email, password})
-        handleClose()
+        let result = submitLogin({email, password})
+        if (result.error){
+            setError(result.error)
+        } else {
+            //navigate('/map')
+        }
     };
 
   return (
@@ -55,7 +63,6 @@ function SignIn({setSignInFalse, submitLogin, handleClose}) {
               autoComplete="email"
               autoFocus
               onChange = {(e) => setEmail(e.target.value)}
-
             />
             <TextField
               margin="normal"
@@ -67,7 +74,8 @@ function SignIn({setSignInFalse, submitLogin, handleClose}) {
               id="password"
               autoComplete="current-password"
               onChange = {(e) => setPassword(e.target.value)}
-
+              error = {error}
+              helperText = {error}
             />
             <Button
               type="submit"
