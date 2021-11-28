@@ -1,3 +1,10 @@
+const initialUser = {
+    email: "",
+    firstName: "",
+    lastName: "",
+    id: ""
+}
+
 const initialState = {
     mapLocation: {
         lon: -98.7275,
@@ -9,9 +16,7 @@ const initialState = {
     chamber: 'Senate',
     roles: [],
     selectedMember: {...{}, roles: [{}]},
-    user: {
-        email: ""
-    }
+    user: initialUser
 }
 
 export default function reducer(state=initialState, {type, payload}){
@@ -29,7 +34,9 @@ export default function reducer(state=initialState, {type, payload}){
         case 'SET_CHAMBER':
             return {...state, chamber: payload};
         case 'SET_USER':
-            return {...state, user: payload};                 
+            return {...state, user: payload};
+        case 'LOGOUT':
+            return {...state, user: initialUser};                  
         default:
             return {...state};    
     }

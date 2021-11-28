@@ -11,15 +11,15 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {submitSignup} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 
 
 const theme = createTheme();
 
 function SignUp({setSignInTrue, submitSignup}) {
 
+    const navigate = useNavigate()
     const path = useLocation().pathname
-    console.log(path === "/signup")
     const [firstName, setFirstName] = React.useState("")
     const [lastName, setLastName] = React.useState("")
     const [email, setEmail] = React.useState("")
@@ -28,7 +28,8 @@ function SignUp({setSignInTrue, submitSignup}) {
     const handleSubmit = (event) => {
     event.preventDefault();
     submitSignup({first_name: firstName, last_name: lastName, email, password})
-  };
+    //navigate('/map')
+};
 
   return (
     <ThemeProvider theme={theme}>

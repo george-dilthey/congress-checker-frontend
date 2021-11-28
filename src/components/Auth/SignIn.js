@@ -12,14 +12,13 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {submitLogin} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
 
 const theme = createTheme();
 
 function SignIn({setSignInFalse, submitLogin}) {
 
     let [error, setError] = React.useState(null);
-    const navigate = useNavigate()
 
 	const path = useLocation().pathname
     const [email, setEmail] = React.useState("")
@@ -27,12 +26,7 @@ function SignIn({setSignInFalse, submitLogin}) {
   
     const handleSubmit = (event) => {
         event.preventDefault();
-        let result = submitLogin({email, password})
-        if (result.error){
-            setError(result.error)
-        } else {
-            //navigate('/map')
-        }
+        submitLogin({email, password})        
     };
 
   return (

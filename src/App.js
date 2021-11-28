@@ -6,14 +6,19 @@ import NavBar from './components/NavBar/NavBar';
 import MemberShow from './components/MemberShow/MemberShow';
 import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
+import AccountContainer from './components/Account/AccountContainer';
 
-function App({user}) {
-  console.log(user)
+import { useEffect } from 'react'
+import { autoLogin } from './redux/actionCreators';
+
+function App({user, autoLogin}) {
 
   const loader = document.querySelector('.loader');
 
   const showLoader = () => loader.classList.remove('hide');
   const hideLoader = () => loader.classList.add('hide');
+
+  useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
   return (
     <div>
@@ -23,7 +28,7 @@ function App({user}) {
         <Route path="/members/:mid" element= {<MemberShow />} />
         <Route path="/signup" element= {<SignUp />} />
         <Route path="/signin" element= {<SignIn />} />
-
+        <Route path="/account" element= {<AccountContainer/>} />
 
       </Routes>
     </div>
@@ -32,4 +37,4 @@ function App({user}) {
 
 const mapStateToProps = (state) => ({user: state.user})
 
-export default connect(mapStateToProps, null)(App); 
+export default connect(mapStateToProps, {autoLogin} )(App); 

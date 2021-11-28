@@ -8,9 +8,9 @@ import { Divider, Grid, Container, Avatar } from '@mui/material';
 import Stat from "./Stat";
 
 
-const MemberShow = ({ m, getMember }) => {
+const MemberShow = ({ m, getMember, propMid }) => {
   
-  const mid = useParams().mid
+  const mid = useParams().mid || propMid
   const latestRole = m.roles[0]
 
   
