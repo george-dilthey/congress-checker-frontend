@@ -6,6 +6,7 @@ import { getMember } from "../../redux/actionCreators";
 import TwitterTimeline from "./TwitterTimeline";
 import { Divider, Grid, Container, Avatar } from '@mui/material';
 import Stat from "./Stat";
+import Bills from "./Bills";
 
 
 const MemberShow = ({ m, getMember, propMid }) => {
@@ -32,8 +33,6 @@ const MemberShow = ({ m, getMember, propMid }) => {
           <h2 className="name">{m.firstName} {m.middleName} {m.lastName}</h2>
       </div>
       <Divider variant="middle" sx={{ mb: 5 }} />
-
-
       <Container maxWidth="xl">
         <Grid container spacing={3} justifyContent="space-evenly" alignItems="center">
           <Grid item xs={12} sm={6} md={3} >
@@ -49,8 +48,8 @@ const MemberShow = ({ m, getMember, propMid }) => {
             <Stat stat={latestRole.missedVotes} statText={'Missed Votes'} bgcolor='#FFE7D9' />           
           </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
-            <Stat stat={latestRole.missedVotes} statText={'Missed Votes'} bgcolor='#FFE7D9' />           
+          <Grid item xs={12} md={6} lg={6} >
+            <Bills bills={m.bills} bgcolor='#FFE7D9' />         
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <TwitterTimeline handle={m.twitterAccount} />

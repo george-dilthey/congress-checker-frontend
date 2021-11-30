@@ -10,6 +10,7 @@ import AccountContainer from './components/Account/AccountContainer';
 
 import { useEffect } from 'react'
 import { autoLogin } from './redux/actionCreators';
+import Footer from './components/NavBar/Footer';
 
 function App({user, autoLogin}) {
 
@@ -29,8 +30,8 @@ function App({user, autoLogin}) {
         <Route path="/signup" element= {<SignUp />} />
         <Route path="/signin" element= {<SignIn />} />
         <Route path="/account" element= {<AccountContainer/>} />
-
       </Routes>
+      <Footer />
     </div>
   );
 }
