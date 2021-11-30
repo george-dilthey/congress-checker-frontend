@@ -4,10 +4,10 @@ import './NavBar.css'
 
 export default function Footer() {
   return (
-      <Container >
-          <Typography color="black" align='center' sx={{m: 3, bottom: 0}}>
-            © 2021 George Dilthey
-          </Typography>
-      </Container>
+    <Container >
+        <Typography color="black" align='center' sx={{m: 3, bottom: 0}}>
+          © 2021 George Dilthey
+        </Typography>
+    </Container>
   )
 }

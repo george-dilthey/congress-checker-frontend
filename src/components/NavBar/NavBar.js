@@ -11,7 +11,7 @@ const NavBar = ({user, logout}) => {
       <NavLink to={`/`}><li>Home</li></NavLink>
       <NavLink to={`/map`}><li>Map</li></NavLink>
       {loggedInUser ? <NavLink to={`/account`}><li>Account</li></NavLink> : <NavLink to={`/signup`}><li>Sign Up</li></NavLink>}
-      {loggedInUser ? <button onClick={logout}><li>Logout!</li></button> : null}
+      {loggedInUser ? <NavLink to={'/signup'} onClick={logout}><li>Logout</li></NavLink> : null}
     </ul>
   );
 };
