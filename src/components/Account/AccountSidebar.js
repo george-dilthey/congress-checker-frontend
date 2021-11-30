@@ -2,17 +2,28 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import MemberShow from "../MemberShow/MemberShow";
 import './Account.css'
-import { Drawer, Toolbar, Divider, List, ListItem, ListItemText } from "@mui/material";
+import { Drawer, List, Divider, ListItemText } from "@mui/material";
+
+import ListItemButton from '@mui/material/ListItemButton';
 
 
 
-const AccountSidebar = ({user}) => {
+
+const AccountSidebar = ({setMemberShow, user}) => {
 
   const [members, setMembers] = useState([])
+  const [selectedMember, setSelectedMember] = useState("")
 
   useEffect(()=> {
-    setMembers(user.checklists[0].members)
-  }, [user])
+    setMembers(user.checklists ? user.checklists[0].members : [])
+    setMemberShow(members[0] != undefined ? members[0].mid : "")
+    setSelectedMember(members[0] != undefined ? members[0].mid : "");
+  }, [user, members])
+
+  const handleListItemClick = (member) => {
+    setSelectedMember(member);
+    setMemberShow(member)
+  };
 
   return (
     <div>
@@ -31,11 +42,13 @@ const AccountSidebar = ({user}) => {
         anchor="left"
       >
       <Divider />
-        {members.map((m, index) => (
-          <ListItem button key={m.mid}>
+      <List sx={{background: "white"}}>
+        {members.map((m) => (
+          <ListItemButton key={m.mid} onClick={(event) => handleListItemClick(m.mid)} selected={m.mid === selectedMember} >
             <ListItemText primary={`${m.firstName} ${m.lastName}`} />
-          </ListItem>
+          </ListItemButton>
         ))}
+      </List>
       </Drawer>
     </div>
   );
@@ -46,8 +59,6 @@ const mapStateToProps = (state) => {
     user: state.user
   }
 }
-
-
   
 export default connect(mapStateToProps, null)(AccountSidebar)
 

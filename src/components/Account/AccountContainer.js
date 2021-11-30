@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import MemberShow from "../MemberShow/MemberShow";
 import './Account.css'
@@ -8,17 +8,23 @@ import { Box, CssBaseline, AppBar, Toolbar, Typography } from "@mui/material";
 
 
 const AccountContainer = () => {
+
+  const [member, setMember] = useState("")
+  
+  const setMemberShow = (mid) => {
+    setMember(mid)
+  }
    
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AccountSidebar />
+        <AccountSidebar setMemberShow={setMemberShow} />
         <Box
           component="main"
           sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
         >
-          <MemberShow propMid="B001267" />
+          {member != "" ? <MemberShow propMid={member} /> : null}
         </Box>
       </Box>
     </div>
