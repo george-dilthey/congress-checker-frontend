@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import MemberShow from "../MemberShow/MemberShow";
 import './Account.css'
@@ -6,9 +6,14 @@ import { Drawer, Toolbar, Divider, List, ListItem, ListItemText } from "@mui/mat
 
 
 
-const AccountSidebar = () => {
-   
-  
+const AccountSidebar = ({user}) => {
+
+  const [members, setMembers] = useState([])
+
+  useEffect(()=> {
+    setMembers(user.checklists[0].members)
+  }, [user])
+
   return (
     <div>
       <Drawer
@@ -18,7 +23,7 @@ const AccountSidebar = () => {
           '& .MuiDrawer-paper': {
             width: 240,
             boxSizing: 'border-box',
-            mt: '7vh',
+            mt: '52px',
 
           },
         }}
@@ -26,15 +31,9 @@ const AccountSidebar = () => {
         anchor="left"
       >
       <Divider />
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      <Divider />
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+        {members.map((m, index) => (
+          <ListItem button key={m.mid}>
+            <ListItemText primary={`${m.firstName} ${m.lastName}`} />
           </ListItem>
         ))}
       </Drawer>
@@ -42,9 +41,15 @@ const AccountSidebar = () => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
 
   
-export default connect(null, null)(AccountSidebar)
+export default connect(mapStateToProps, null)(AccountSidebar)
 
 
 
