@@ -15,7 +15,7 @@ const AccountSidebar = ({setMemberShow, user}) => {
   const [selectedMember, setSelectedMember] = useState("")
 
   useEffect(()=> {
-    setMembers(user.checklists ? user.checklists[0].members : [])
+    setMembers(user.checklists && user.checklists.length > 0 ? user.checklists[0].members : [])
     setMemberShow(members[0] != undefined ? members[0].mid : "")
     setSelectedMember(members[0] != undefined ? members[0].mid : "");
   }, [user, members])

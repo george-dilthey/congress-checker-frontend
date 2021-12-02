@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import MemberShow from "../MemberShow/MemberShow";
 import './Account.css'
 import AccountSidebar from "./AccountSidebar";
-import { Box, CssBaseline, AppBar, Toolbar, Typography } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
 
 
@@ -24,7 +24,7 @@ const AccountContainer = () => {
           component="main"
           sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
         >
-          {member != "" ? <MemberShow propMid={member} /> : null}
+          {member != "" ? <MemberShow propMid={member} /> : <h1 style={{textAlign: "center"}}>Oops, there's nothing here. Follow something to add it to your checklist!</h1> }
         </Box>
       </Box>
     </div>

@@ -21,15 +21,20 @@ const style = {
 };
 
 
-const AuthModal = () => {
+const AuthModal = ({user}) => {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleFollow = () => console.log('hi')
    
   return (
     <div>
-      <Button onClick={handleOpen} variant="outlined" size="small" sx={{ m: 1, width: 150 }}>Follow</Button>
+      {user.email ? 
+        <Button onClick={handleFollow} variant="outlined" size="small" sx={{ m: 1, width: 150 }}>Follow</Button> : 
+        <Button onClick={handleOpen} variant="outlined" size="small" sx={{ m: 1, width: 150 }}>Follow</Button>
+      }
       <Modal
         open={open}
         onClose={handleClose}
@@ -44,4 +49,10 @@ const AuthModal = () => {
   );
 };
 
-export default connect(null, null)(AuthModal);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, null)(AuthModal);

@@ -1,7 +1,7 @@
 import './App.css';
 import Map from './components/Map/Map.js';
 import { connect } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar';
 import MemberShow from './components/MemberShow/MemberShow';
 import SignUp from './components/Auth/SignUp';
@@ -29,7 +29,7 @@ function App({user, autoLogin}) {
         <Route path="/members/:mid" element= {<MemberShow />} />
         <Route path="/signup" element= {<SignUp />} />
         <Route path="/signin" element= {<SignIn />} />
-        <Route path="/account" element= {<AccountContainer/>} />
+        {user.email ? <Route path="/account" element= {<AccountContainer />} /> : <Route path="/account" element={<Navigate replace to="/signin" />} /> }
       </Routes>
       <Footer />
     </div>
