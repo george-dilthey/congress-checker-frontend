@@ -36,7 +36,7 @@ const AuthModal = ({member}) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <AuthContainer />
+          <AuthContainer member={member} />
         </Box>
       </Modal>
     </div>  

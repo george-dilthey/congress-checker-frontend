@@ -1,0 +1,13 @@
+.home {
+  background: #E8DBCC;
+  height: 100vh;
+  padding-top: 10vh;
+}
+
+.icon {
+  font-size: 20vh; 
+}
+
+.header {
+  text-align: center; 
+}

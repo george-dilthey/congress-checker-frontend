@@ -16,7 +16,7 @@ import { useLocation, useNavigate } from 'react-router'
 
 const theme = createTheme();
 
-function SignUp({setSignInTrue, submitSignup}) {
+function SignUp({setSignInTrue, submitSignup, member}) {
 
     const navigate = useNavigate()
     const path = useLocation().pathname
@@ -27,8 +27,9 @@ function SignUp({setSignInTrue, submitSignup}) {
 
     const handleSubmit = (event) => {
     event.preventDefault();
-    submitSignup({first_name: firstName, last_name: lastName, email, password})
-    navigate('/')
+    const mid = member ? member.mid : null
+    submitSignup({first_name: firstName, last_name: lastName, email, password, mid})
+    navigate('/account')
 };
 
   return (

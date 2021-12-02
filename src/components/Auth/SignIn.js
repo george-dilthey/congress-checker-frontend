@@ -8,7 +8,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import FormHelperText from '@mui/material/FormHelperText';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {submitLogin} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
@@ -16,7 +15,7 @@ import { useLocation, useNavigate } from 'react-router';
 
 const theme = createTheme();
 
-function SignIn({setSignInFalse, submitLogin, user}) {
+function SignIn({setSignInFalse, submitLogin, user, member}) {
 
   let [error, setError] = React.useState(null);
 
@@ -27,16 +26,15 @@ function SignIn({setSignInFalse, submitLogin, user}) {
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      submitLogin({email, password})    
-  };
+      const mid = member ? member.mid : null
+      submitLogin({email, password, mid})
+    };
 
   React.useEffect(() => {
     if(user.email) {
       navigate('/account')
     }
   }, [user])
-
-
 
   return (
     <ThemeProvider theme={theme}>

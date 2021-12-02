@@ -4,7 +4,7 @@ import './AuthModal.css'
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const AuthContainer = () => {
+const AuthContainer = ({member}) => {
 
   const [signIn, setSignIn] = React.useState(false);
    
@@ -14,7 +14,7 @@ const AuthContainer = () => {
 
   return (
     <div>
-      {signIn ? <SignIn setSignInFalse={setSignInFalse} /> : <SignUp setSignInTrue={setSignInTrue}/>}
+      {signIn ? <SignIn member={member} setSignInFalse={setSignInFalse} /> : <SignUp  member={member} setSignInTrue={setSignInTrue}/>}
     </div>  
   );
 };

@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import { autoLogin } from './redux/actionCreators';
 import Footer from './components/NavBar/Footer';
 import PrivateRoute from './PrivateRoute';
+import HomeContainer from './components/Home/HomeContainer';
 
 function App({autoLogin}) {
 
@@ -21,6 +22,7 @@ function App({autoLogin}) {
     <div>
       <NavBar />
       <Routes>
+        <Route path="/" element={<HomeContainer/>} />
         <Route path="/map" element={<Map hideLoader={hideLoader} showLoader={showLoader} />} />
         <Route path="/members/:mid" element= {<MemberShow />} />
         <Route path="/signup" element= {<SignUp />} />
