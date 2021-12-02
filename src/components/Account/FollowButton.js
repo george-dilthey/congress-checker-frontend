@@ -2,16 +2,16 @@ import React, {  } from "react";
 import { connect } from "react-redux";
 import './Account.css'
 import { Button } from "@mui/material";
-import { addMemberToChecklist } from "../../redux/actionCreators";
+import { updateChecklist } from "../../redux/actionCreators";
 import { useNavigate } from "react-router";
 import CheckIcon from '@mui/icons-material/Check';
 
 
-const FollowButton = ({handleOpen, user, addMemberToChecklist, member}) => {
+const FollowButton = ({handleOpen, user, updateChecklist, member}) => {
 
   const navigate = useNavigate()
   const handleFollow = () => {
-    addMemberToChecklist({mid: member.mid}, user.checklists[0].id)
+    updateChecklist({mid: member.mid, removeMember: false}, user.checklists[0].id)
     //navigate('/account')
   }
    
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
   }
 }
   
-export default connect(mapStateToProps, {addMemberToChecklist})(FollowButton)
+export default connect(mapStateToProps, {updateChecklist})(FollowButton)
 
 
 

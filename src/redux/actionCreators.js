@@ -94,14 +94,13 @@ function handleUserResponse(res, dispatch){
     }
   }
 
-export const addMemberToChecklist = (mid, id) => {
-    console.log(mid)
+export const updateChecklist = (data, id) => {
     return dispatch => fetch(`http://localhost:3000/api/v1/checklists/${id}`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(mid),
+        body: JSON.stringify(data),
       })
       .then(res => handleUserResponse(res, dispatch))
 
