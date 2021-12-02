@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import AuthContainer from "./AuthContainer";
+import FollowButton from "../Account/FollowButton";
 
 const style = {
   position: 'absolute',
@@ -21,20 +22,15 @@ const style = {
 };
 
 
-const AuthModal = ({user}) => {
+const AuthModal = () => {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const handleFollow = () => console.log('hi')
    
   return (
     <div>
-      {user.email ? 
-        <Button onClick={handleFollow} variant="outlined" size="small" sx={{ m: 1, width: 150 }}>Follow</Button> : 
-        <Button onClick={handleOpen} variant="outlined" size="small" sx={{ m: 1, width: 150 }}>Follow</Button>
-      }
+      <FollowButton handleOpen={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -49,10 +45,4 @@ const AuthModal = ({user}) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps, null)(AuthModal);
+export default connect(null, null)(AuthModal);

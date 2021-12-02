@@ -7,6 +7,7 @@ import TwitterTimeline from "./TwitterTimeline";
 import { Divider, Grid, Container, Avatar } from '@mui/material';
 import Stat from "./Stat";
 import Bills from "./Bills";
+import AuthModal from "../Auth/AuthModal";
 
 
 const MemberShow = ({ m, getMember, propMid }) => {
@@ -31,7 +32,9 @@ const MemberShow = ({ m, getMember, propMid }) => {
       <div className="header-text">
           <h4 className="title">{latestRole.title}</h4>
           <h2 className="name">{m.firstName} {m.middleName} {m.lastName}</h2>
+          <AuthModal />
       </div>
+      
       <Divider variant="middle" sx={{ mb: 5 }} />
       <Container maxWidth="xl">
         <Grid container spacing={3} justifyContent="space-evenly" alignItems="center">
