@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import './Account.css'
 import { Button } from "@mui/material";
+import { addMemberToChecklist } from "../../redux/actionCreators";
 
 
 
-const FollowButton = ({handleOpen, user}) => {
+const FollowButton = ({handleOpen, user, addMemberToChecklist, member}) => {
 
-  const handleFollow = () => console.log('hi')
+  const handleFollow = () => {
+    addMemberToChecklist({mid: member.mid}, user.checklists[0].id)
+  }
    
   return (
     <div>
@@ -25,7 +28,7 @@ const mapStateToProps = (state) => {
   }
 }
   
-export default connect(mapStateToProps, null)(FollowButton)
+export default connect(mapStateToProps, {addMemberToChecklist})(FollowButton)
 
 
 

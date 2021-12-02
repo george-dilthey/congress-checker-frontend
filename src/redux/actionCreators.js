@@ -93,3 +93,16 @@ function handleUserResponse(res, dispatch){
       .then(res => alert(res.errors))
     }
   }
+
+export const addMemberToChecklist = (mid, id) => {
+    console.log(mid)
+    return dispatch => fetch(`http://localhost:3000/api/v1/checklists/${id}`, {
+        method: 'PUT', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(mid),
+      })
+      .then(res => handleUserResponse(res, dispatch))
+
+}   

@@ -21,8 +21,7 @@ const style = {
   pb: 3,
 };
 
-
-const AuthModal = () => {
+const AuthModal = ({member}) => {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -30,7 +29,7 @@ const AuthModal = () => {
    
   return (
     <div>
-      <FollowButton handleOpen={handleOpen} />
+      <FollowButton handleOpen={handleOpen} member={member} />
       <Modal
         open={open}
         onClose={handleClose}

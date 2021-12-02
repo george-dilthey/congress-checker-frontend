@@ -32,7 +32,7 @@ const MemberShow = ({ m, getMember, propMid }) => {
       <div className="header-text">
           <h4 className="title">{latestRole.title}</h4>
           <h2 className="name">{m.firstName} {m.middleName} {m.lastName}</h2>
-          <AuthModal />
+          <AuthModal member= {m} />
       </div>
       
       <Divider variant="middle" sx={{ mb: 5 }} />

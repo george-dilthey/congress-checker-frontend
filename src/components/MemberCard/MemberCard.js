@@ -21,7 +21,7 @@ const MemberCard = ({ member, r }) => {
             sx={{ width: 100, height: 100, margin: "auto" }}
           />
           <h4>{member.shortTitle} {member.firstName} {member.lastName} ({r.party})</h4>
-          <AuthModal />
+          <AuthModal member={member} />
           <Link to={`/members/${member.mid}`} ><Button variant="contained" size="small" sx={{width: 150, textDecoration: "none" }}>Learn More</Button></Link>
         </CardContent>
       <Divider light />
