@@ -1,23 +1,19 @@
 import './App.css';
 import Map from './components/Map/Map.js';
 import { connect } from "react-redux";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar';
 import MemberShow from './components/MemberShow/MemberShow';
 import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
 import AccountContainer from './components/Account/AccountContainer';
-
+import { showLoader, hideLoader } from './loader';
 import { useEffect } from 'react'
 import { autoLogin } from './redux/actionCreators';
 import Footer from './components/NavBar/Footer';
+import PrivateRoute from './PrivateRoute';
 
-function App({user, autoLogin}) {
-
-  const loader = document.querySelector('.loader');
-
-  const showLoader = () => loader.classList.remove('hide');
-  const hideLoader = () => loader.classList.add('hide');
+function App({autoLogin}) {
 
   useEffect(() => localStorage.token && autoLogin(), [autoLogin])
 
@@ -29,7 +25,14 @@ function App({user, autoLogin}) {
         <Route path="/members/:mid" element= {<MemberShow />} />
         <Route path="/signup" element= {<SignUp />} />
         <Route path="/signin" element= {<SignIn />} />
-        {user.email ? <Route path="/account" element= {<AccountContainer />} /> : <Route path="/account" element={<Navigate replace to="/signin" />} /> }
+        <Route
+          path="/account"
+          element={
+            <PrivateRoute>
+              <AccountContainer />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       <Footer />
     </div>

@@ -12,22 +12,31 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {submitLogin} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const theme = createTheme();
 
-function SignIn({setSignInFalse, submitLogin}) {
+function SignIn({setSignInFalse, submitLogin, user}) {
 
-    let [error, setError] = React.useState(null);
+  let [error, setError] = React.useState(null);
 
+  const navigate = useNavigate()
 	const path = useLocation().pathname
-    const [email, setEmail] = React.useState("")
-    const [password, setPassword] = React.useState("")
-  
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        submitLogin({email, password})        
-    };
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      submitLogin({email, password})    
+  };
+
+  React.useEffect(() => {
+    if(user.email) {
+      navigate('/account')
+    }
+  }, [user])
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,4 +102,6 @@ function SignIn({setSignInFalse, submitLogin}) {
   );
 }
 
-export default connect(null, {submitLogin})(SignIn);
+const mapStateToProps = (state) => ({user: state.user})
+
+export default connect(mapStateToProps, {submitLogin})(SignIn);

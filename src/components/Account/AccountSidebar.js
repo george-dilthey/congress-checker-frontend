@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import MemberShow from "../MemberShow/MemberShow";
 import './Account.css'
 import { Drawer, List, Divider, ListItemText } from "@mui/material";
-
 import ListItemButton from '@mui/material/ListItemButton';
-
-
-
+import { hideLoader, showLoader } from "../../loader";
 
 const AccountSidebar = ({setMemberShow, user}) => {
 
-  const [members, setMembers] = useState([])
+  const [members, setMembers] = useState(user.checklists[0].members)
   const [selectedMember, setSelectedMember] = useState("")
 
   useEffect(()=> {
+    showLoader()
+
+
     setMembers(user.checklists && user.checklists.length > 0 ? user.checklists[0].members : [])
-    setMemberShow(members[0] != undefined ? members[0].mid : "")
-    setSelectedMember(members[0] != undefined ? members[0].mid : "");
+    setMemberShow(members[0] !== undefined ? members[0].mid : "")
+    setSelectedMember(members[0] !== undefined ? members[0].mid : "");
+
+    hideLoader()
   }, [user, members])
 
   const handleListItemClick = (member) => {

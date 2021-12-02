@@ -28,7 +28,7 @@ function SignUp({setSignInTrue, submitSignup}) {
     const handleSubmit = (event) => {
     event.preventDefault();
     submitSignup({first_name: firstName, last_name: lastName, email, password})
-    //navigate('/map')
+    navigate('/')
 };
 
   return (

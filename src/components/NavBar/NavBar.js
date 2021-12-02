@@ -5,7 +5,7 @@ import { logout } from '../../redux/actionCreators';
 
 const NavBar = ({user, logout}) => {
   
-  const loggedInUser = user.email != ""
+  const loggedInUser = user.email !== ""
   
   return (
     <ul>
