@@ -11,11 +11,11 @@ import { updateChecklist } from "../../redux/actionCreators";
 const AccountSidebar = ({setMemberShow, user, updateChecklist}) => {
 
   const [members, setMembers] = useState(user.checklists[0].members)
-  const [selectedMember, setSelectedMember] = useState(members[0] !== undefined ? members[0].mid : "")
+  const [selectedMember, setSelectedMember] = useState(members[0].mid)
 
   useEffect(()=> {
-    setMembers(user.checklists && user.checklists.length > 0 ? user.checklists[0].members : [])
-    setMemberShow(members[0] !== undefined ? members[0].mid : "")
+    setMembers(user.checklists[0].members)
+    setMemberShow(selectedMember)
   }, [user, members])
 
   const handleListItemClick = (member) => {
@@ -25,7 +25,7 @@ const AccountSidebar = ({setMemberShow, user, updateChecklist}) => {
 
   const handleRemove = (member) => {
     updateChecklist({mid: member.mid, removeMember: true}, user.checklists[0].id)
-    setSelectedMember(members[0] !== undefined ? members[0].mid : "")
+    setSelectedMember(members[0].mid)
   }
 
   return (

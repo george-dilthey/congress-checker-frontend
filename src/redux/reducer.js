@@ -2,7 +2,17 @@ const initialUser = {
     email: "",
     firstName: "",
     lastName: "",
-    id: ""
+    id: "",
+    checklists: [{
+        id: "",
+        members: []
+    }],
+}
+
+const initialSelectedMember = {
+    ...{},
+    roles: [{}],
+    bills: [{}]
 }
 
 const initialState = {
@@ -15,7 +25,7 @@ const initialState = {
     congressNumber: 117,
     chamber: 'Senate',
     roles: [],
-    selectedMember: {...{}, roles: [{}]},
+    selectedMember: initialSelectedMember,
     user: initialUser
 }
 
@@ -26,7 +36,7 @@ export default function reducer(state=initialState, {type, payload}){
         case 'HOVER_STATE': 
             return {...state, hoveredStateName: payload};
         case 'GET_ROLES':
-            return {...state, selectedMember: {...{}, roles: [{}]}, roles: payload};
+            return {...state, selectedMember: initialSelectedMember, roles: payload};
         case 'GET_MEMBER':
             return {...state, selectedMember: payload};
         case 'SET_CONGRESS_NUMBER':

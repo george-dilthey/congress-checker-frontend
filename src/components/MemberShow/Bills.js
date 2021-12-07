@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import './MemberShow.css'
 import Paper from '@mui/material/Paper';
@@ -13,6 +13,7 @@ const Bills = ({bills, bgcolor}) => {
 
   }, [bills])
 
+
   return (
     <Paper elevation={3} sx={{
       p: 2,
@@ -24,7 +25,7 @@ const Bills = ({bills, bgcolor}) => {
       }}>
       <div><h2>Recent Bills:</h2></div>
       <>
-        {bills ? bills.map(b => 
+        {bills.map(b => 
           <>
             <a target="_blank" href={b.congressdotgovUrl}>
               <ListItem button >
@@ -37,7 +38,7 @@ const Bills = ({bills, bgcolor}) => {
                 </ListItem>
                 <Divider sx={{  width: '100%', p: 0 }} component="li" />
             </a>
-          </>) : null}
+          </>)}
       </>
     </Paper>
   );

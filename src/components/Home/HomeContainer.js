@@ -17,7 +17,6 @@ const HomeContainer = () => {
           <Link to={`/map`} ><Button variant="contained" size="large" sx={{width: 150, textDecoration: "none" }}>View Map</Button></Link>
         </div>
       </div>
-      
     </div>  
   );
 };
