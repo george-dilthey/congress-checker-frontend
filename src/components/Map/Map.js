@@ -6,9 +6,7 @@ import { connect } from "react-redux";
 import './Map.css';
 import MemberContainer from '../MemberCard/MemberContainer.js'
 import MapSettings from './MapSettings';
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
-mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZ2RpbHRoZXkiLCJhIjoiY2t2azlpOGY2ZDQydTMybnpkMGtlNzNxcyJ9.TCQKJMDL492TVA6FYl6neg';
 
