@@ -1,3 +1,5 @@
+const api = process.env.REACT_APP_API
+
 export const setMapLocation = (lon, lat, zoom) => {
     return ({
         type: 'MOVE_MAP', 
@@ -27,7 +29,7 @@ export const setChamber = (chamber) => {
 }
 
 export const getRoles = () => {
-    return dispatch => fetch('http://localhost:3000/api/v1/roles')
+    return dispatch => fetch(api + 'api/v1/roles')
     .then(response => response.json())
     .then(data => {
       console.log('d')
@@ -36,13 +38,13 @@ export const getRoles = () => {
 }
 
 export const getMember = (mid) => {
-    return dispatch => fetch(`http://localhost:3000/api/v1/members/${mid}`)
+    return dispatch => fetch(api + `api/v1/members/${mid}`)
     .then(response => response.json())
     .then(data => dispatch({type: 'GET_MEMBER', payload: data}));
 }
 
 export const submitSignup = (user) => {
-    return dispatch => fetch('http://localhost:3000/users', {
+    return dispatch => fetch(api + 'users', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +59,7 @@ export const submitSignup = (user) => {
 }
 
 export const submitLogin = (user) => {
-    return dispatch => fetch('http://localhost:3000/sessions', {
+    return dispatch => fetch(api + 'sessions', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +70,7 @@ export const submitLogin = (user) => {
 } 
 
 export const autoLogin = () => {
-    return dispatch => fetch("http://localhost:3000/me", {
+    return dispatch => fetch(api + "me", {
         headers: {
             'Authorization': localStorage.token
         
@@ -98,7 +100,7 @@ function handleUserResponse(res, dispatch){
   }
 
 export const updateChecklist = (data, id) => {
-    return dispatch => fetch(`http://localhost:3000/api/v1/checklists/${id}`, {
+    return dispatch => fetch(api + `api/v1/checklists/${id}`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',

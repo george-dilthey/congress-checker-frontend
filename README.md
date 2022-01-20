@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# Congress Checker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app allows you to view congress members, create an account, and keep track of certain members via a "checklist".
 
-## Available Scripts
+## Installation
 
 In the project directory, you can run:
 
